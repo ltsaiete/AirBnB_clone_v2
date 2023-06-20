@@ -20,6 +20,7 @@ class BaseModel:
                 kwargs['updated_at'] = datetime.now().isoformat()
             if kwargs.get('created_at') is None:
                 kwargs['created_at'] = datetime.now().isoformat()
+                
             if kwargs.get('id') is None:
                 kwargs['id'] = str(uuid.uuid4())
 

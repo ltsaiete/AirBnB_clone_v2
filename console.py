@@ -131,6 +131,7 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
+        
         args = args.split()
         model = args.pop(0)
         if model not in HBNBCommand.classes:
