@@ -63,5 +63,6 @@ class FileStorage:
         Args:
             obj (BaseModel, optional): object to delete. Defaults to None.
         """
-        cls = (str(type(obj)).split('.')[-1]).split('\'')[0]
-        del FileStorage.__objects[f'{cls}.{obj.id}']
+        if obj is not None:
+            cls = (str(type(obj)).split('.')[-1]).split('\'')[0]
+            del FileStorage.__objects[f'{cls}.{obj.id}']
