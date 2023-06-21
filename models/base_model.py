@@ -39,6 +39,7 @@ class BaseModel:
             if kwargs.get('__class__') is not None:
                 del kwargs['__class__']
             # self.__dict__.update(kwargs)
+
             for k, v in kwargs.items():
                 setattr(self, k, v)
 

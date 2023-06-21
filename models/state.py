@@ -24,5 +24,4 @@ class State(BaseModel, Base):
             for k, v in cities_objs.values():
                 if v.state_id == self.id:
                     cities_list.append(v)
-
             return cities_list
