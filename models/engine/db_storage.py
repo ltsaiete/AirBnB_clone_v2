@@ -20,5 +20,5 @@ class DBStorage:
         Session = sessionmaker(bind=self.__engine)
         self.__session = Session()
 
-        if getenv('HBNB_ENV'):
+        if getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
