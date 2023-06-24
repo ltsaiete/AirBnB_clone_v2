@@ -33,9 +33,22 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
+        """_summary_
+
+        Args:
+            cls (_type_, optional): _description_. Defaults to None.
+
+        Returns:
+            _type_: _description_
+        """
         return {}
 
     def new(self, obj):
+        """_summary_
+
+        Args:
+            obj (_type_): _description_
+        """
         pass
 
     def save(self):
