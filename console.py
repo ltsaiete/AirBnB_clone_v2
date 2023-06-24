@@ -114,7 +114,8 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def convert_value(self, value):
-        if isinstance(value, str) and value.isdigit() and value.startswith('0'):
+        if isinstance(value,
+                      str) and value.isdigit() and value.startswith('0'):
             return value
         try:
             converted_value = int(value)
@@ -134,7 +135,7 @@ class HBNBCommand(cmd.Cmd):
 
         args = args.split()
         model = args.pop(0)
-        
+
         if model not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
