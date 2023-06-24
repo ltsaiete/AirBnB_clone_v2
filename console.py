@@ -151,6 +151,7 @@ class HBNBCommand(cmd.Cmd):
             dict[key] = value
 
         new_instance = HBNBCommand.classes[model](**dict)
+        storage.new(new_instance)
         storage.save()
         print(new_instance)
         storage.save()
