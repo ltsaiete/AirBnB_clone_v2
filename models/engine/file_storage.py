@@ -67,3 +67,8 @@ class FileStorage:
         if obj is not None:
             cls = (str(type(obj)).split('.')[-1]).split('\'')[0]
             del FileStorage.__objects[f'{cls}.{obj.id}']
+
+    def close(self):
+        """_summary_: Close function
+        """
+        self.reload()

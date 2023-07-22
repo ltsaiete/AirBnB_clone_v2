@@ -65,3 +65,8 @@ class DBStorage:
             obj (BaseModel, optional): object to delete. Defaults to None.
         """
         pass
+
+    def close(self):
+        """_summary_: close() method
+        """
+        self.__session.remove()
