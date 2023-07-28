@@ -14,6 +14,12 @@ class DBStorage:
     __engine = None
     __session = None
 
+    classes = {
+        'User': User, 'Place': Place,
+        'State': State, 'City': City, 'Amenity': Amenity,
+        'Review': Review
+    }
+
     def __init__(self):
         user = getenv('HBNB_MYSQL_USER')
         pwd = getenv('HBNB_MYSQL_PWD')
@@ -27,14 +33,25 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        """_summary_
+        """query on the current database session (self.__session)
+        all objects depending of the class name (argument cls)
         Args:
             cls (_type_, optional): _description_. Defaults to None.
         Returns:
             _type_: _description_
         """
+        all_dict = {}
+        if cls is not None:
+            objs = self.__session.query(DBStorage.classes[cls])
+            for obj in objs:
+                all_dict.update({cls + '.' + obj.id: obj.to_dict()})
+        else:
+            for k, v in DBStorage.classes.items():
+                objs = self.__session.query(v)
+                for obj in objs:
+                    all_dict.update({k + '.' + obj.id: obj.to_dict()})
 
-        return {}
+        return all_dict
 
     def new(self, obj):
         """_summary_
