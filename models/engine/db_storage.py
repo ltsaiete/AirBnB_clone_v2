@@ -28,26 +28,24 @@ class DBStorage:
 
     def all(self, cls=None):
         """_summary_
-
         Args:
             cls (_type_, optional): _description_. Defaults to None.
-
         Returns:
             _type_: _description_
         """
+
         return {}
 
     def new(self, obj):
         """_summary_
-
         Args:
             obj (_type_): _description_
         """
-        pass
+        self.__session.add(obj)
 
     def save(self):
-        """Saves storage dictionary to file"""
-        pass
+        """commit all changes of the current database session"""
+        self.__session.commit()
 
     def reload(self):
         """Creates databases tables and starts a new session"""
@@ -59,14 +57,14 @@ class DBStorage:
         self.__session = Session()
 
     def delete(self, obj=None):
-        """delete obj from __objects if it’s inside
-
+        """delete from the current database session obj if not None
         Args:
             obj (BaseModel, optional): object to delete. Defaults to None.
         """
-        pass
+        if obj is not None:
+            self.__session.delete(obj)
 
-    def close(self):
-        """_summary_: close() method
-        """
-        self.__session.remove()
+    # def close(self):
+    #     """_summary_: close() method
+    #     """
+    #     self.__session.remove()

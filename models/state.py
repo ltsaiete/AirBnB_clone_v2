@@ -13,8 +13,8 @@ class State(BaseModel, Base):
     __tablename__ = 'states'
 
     name = Column(String(60), nullable=False)
-
-    cities = relationship('City', backref='state')
+    cities = relationship('City', backref='state',
+                          cascade="save-update, delete")
 
     if os.getenv('HBNB_TYPE_STORAGE') != 'db':
         from models import storage
