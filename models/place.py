@@ -19,8 +19,8 @@ class Place(BaseModel, Base):
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
 
-    # city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
-    # user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
-    amenity_ids = []
+    city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
+    user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
+    # amenity_ids = []
 
     # reviews = relationship('Review', backref='place')
